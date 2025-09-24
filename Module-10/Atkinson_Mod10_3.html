@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>CSD 340 Web Development with HTML and CSS</title>
+	<meta name="description" 
+		content="Assignment 10.3 by Joel Atkinson">
+	<meta name="keywords" 	
+		content="HTML, CSS, Javascript, Bellevue University, Assignment 10.3">
+	<meta name="author" 
+		content="Joel Atkinson">
+	<meta name="robots" 
+		content="nofollow">
+	<link rel="stylesheet" href="Atkinson_Mod10_3.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Tinos:ital@0;1&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Tinos:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+	
+</head>
+
+<body>
+    <div id="container">
+        <h1>Assignment 10.3: JavaScript - Part 2</h1>
+        <h3>Guess the State of each of these Famous U.S. Landmarks</h3>
+        <div class="image-row">
+            <div class="image-group">
+                <img class="landmark-img" id="img1" src="grand_canyon_bw.jpg" alt="Grand Canyon (BW)" onmouseover="showColor(1); console.log('Hovering on img1')" onmouseout="showBW(1); console.log('Leaving img1')" onclick="showAnswer(1); console.log('Clicked img1')">
+                <p class="caption" id="cap1"></p>
+            </div>
+            <div class="image-group">
+                <img class="landmark-img" id="img2" src="statue_liberty_bw.jpg" alt="Statue of Liberty (BW)" onmouseover="showColor(2); console.log('Hovering on img2')" onmouseout="showBW(2); console.log('Leaving img2')" onclick="showAnswer(2); console.log('Clicked img2')">
+                <p class="caption" id="cap2"></p>
+            </div>
+            <div class="image-group">
+                <img class="landmark-img" id="img3" src="mount_rushmore_bw.jpg" alt="Mt Rushmore (BW)" onmouseover="showColor(3); console.log('Hovering on img3')" onmouseout="showBW(3); console.log('Leaving img3')" onclick="showAnswer(3); console.log('Clicked img3')">
+                <p class="caption" id="cap3"></p>
+            </div>
+            <div class="image-group">
+                <img class="landmark-img" id="img4" src="golden_bridge_bw.jpg" alt="Golden Gate Bridge (BW)" onmouseover="showColor(4); console.log('Hovering on img4')" onmouseout="showBW(4); console.log('Leaving img4')" onclick="showAnswer(4); console.log('Clicked img4')">
+                <p class="caption" id="cap4"></p>
+            </div>
+        </div>
+        <p id="guess-line">Can you guess which state each of these U.S. landmarks is in? (click landmark for answer)</p>
+        <div id="answer"></div>
+    </div>
+
+    <script>
+        function showColor(num) {
+            console.log('showColor called for img' + num);
+            document.getElementById('img' + num).src = getColorImage(num);
+            document.getElementById('cap' + num).textContent = getCaption(num);
+        }
+
+        function showBW(num) {
+            console.log('showBW called for img' + num);
+            document.getElementById('img' + num).src = getBWImage(num);
+            document.getElementById('cap' + num).textContent = '';
+        }
+
+        function getColorImage(num) {
+            if (num == 1) return "grand_canyon_color.jpg";
+            if (num == 2) return "statue_liberty_color.jpg";
+            if (num == 3) return "mount_rushmore_color.jpg";
+            if (num == 4) return "golden_bridge_color.jpg";
+        }
+
+        function getBWImage(num) {
+            if (num == 1) return "grand_canyon_bw.jpg";
+            if (num == 2) return "statue_liberty_bw.jpg";
+            if (num == 3) return "mount_rushmore_bw.jpg";
+            if (num == 4) return "golden_bridge_bw.jpg";
+        }
+
+        function getCaption(num) {
+            if (num == 1) return "Grand Canyon";
+            if (num == 2) return "Statue of Liberty";
+            if (num == 3) return "Mt Rushmore";
+            if (num == 4) return "Golden Gate Bridge";
+        }
+
+        function showAnswer(num) {
+            console.log('showAnswer called for img' + num);
+            let answerDiv = document.getElementById('answer');
+            let landmark = getCaption(num); // Get the landmark name
+            let state = getState(num);
+            let flag = getFlagImage(num);
+            answerDiv.innerHTML = '<p>' + landmark + ' is in ' + state + '</p><img src="' + flag + '" alt="' + state + ' Flag">';
+        }
+
+        function getState(num) {
+            if (num == 1) return "Arizona";
+            if (num == 2) return "New York";
+            if (num == 3) return "South Dakota";
+            if (num == 4) return "California";
+        }
+
+        function getFlagImage(num) {
+            if (num == 1) return "arizona_flag.jpg";
+            if (num == 2) return "new_york_flag.jpg";
+            if (num == 3) return "south_dakota_flag.jpg";
+            if (num == 4) return "california_flag.jpg";
+        }
+    </script>
+</body>
+</html>
