@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CSD 340 Web Development with HTML and CSS</title>
+    <meta name="description"
+          content="Assignment 11.2 by Joel Atkinson">
+    <meta name="keywords"
+          content="HTML, CSS, Javascript, Bellevue University, Assignment 11.2">
+    <meta name="author"
+          content="Joel Atkinson">
+    <meta name="robots"
+          content="nofollow">
+    <link rel="stylesheet" href="Atkinson_Mod11_2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Tinos:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <h1>Assignment 11.2: JavaScript - Part 3</h1>
+    </header>
+    <div class="main-content">
+        <h3 class="instructions">Instructions: Enter a task in the text box and click "Add" to add it to the list.
+            Click "Delete Last Entry" to remove the last task. Click "Display" to show all tasks.</h3>
+        <div class="todo-container">
+            <input type="text" id="taskInput" placeholder="Enter a task">
+            <div class= "button-group">
+                <button onclick="addTask()">Add</button>
+                <button class="delete" onclick="deleteLastTask()">Delete Last Entry</button>
+                <button class="display" onclick="displayTasks()">Display</button>
+            </div>
+        </div>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        let tasks = [];
+
+        function addTask() {
+            const taskInput = document.getElementById("taskInput");
+            const task = taskInput.value.trim();
+            if (task) {
+                tasks.push(task);
+                taskInput.value = ""; // Clear the input
+                alert(`Task "${task}" added at position ${tasks.length}.`);
+            } else {
+                alert("Please enter a task!");
+            }
+        }
+
+        function deleteLastTask() {
+            if (tasks.length > 0) {
+                const removedTask = tasks.pop();
+                alert(`Task "${removedTask}" deleted.`);
+                displayTasks(); // Update display after deletion
+            } else {
+                alert("No tasks to delete!");
+            }
+        }
+        
+        function displayTasks() {
+            const output = document.getElementById("output");
+            if (tasks.length === 0) {
+                output.innerHTML = "<p>No tasks in the list.</p>";
+            } else {
+                let taskList = '<span class="tasks-label">Tasks:</span> <ol>';
+                for (let i = 0; i < tasks.length; i++) {
+                    taskList += `<li>${tasks[i]}</li>`;
+                }
+                taskList += '</ol>';
+                output.innerHTML = taskList;
+            }
+        }
+    </script>
+</body>
+</html>
