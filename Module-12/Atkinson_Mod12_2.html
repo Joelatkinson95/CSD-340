@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CSD 340 Web Development with HTML & CSS</title>
+    <meta name="description"
+          content="Assignment 12.2 by Joel Atkinson">
+    <meta name="keywords"
+          content="HTML, CSS, Bellevue University, Assignment 3.3">
+    <meta name="author"
+          content="Joel Atkinson">
+    <meta name="robots"
+          content="nofollow">
+    <link rel="stylesheet" href="Atkinson_Mod12_2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="container">
+    <h1>Assignment 12.2: JavaScript - Part 4</h1>
+    <div class="left-div">
+        <h3>Top 10 Favorite Books</h3>
+        <div id="bookList"></div>
+        <button onclick="displayAscending()">Top to Bottom</button>
+        <button onclick="displayDescending()">Bottom to Top</button>
+    </div>
+    <div class="right-div">
+        <h3>5 Things I've Learned Since the Course Started</h3>
+        <ul>
+            <li>How to link my HTML file to my CSS file for styling</li>
+            <li>How to add and use fonts from google for my files</li>
+            <li>How to include color to my page by entering color the color codes into my CSS file</li>
+            <li>What h1, h2, h3, body, head, container, li, div, etc all are and how to use them in my HTML files.</li>
+            <li>How to format my CSS file to personalize the output of my HTML file. I have really enjoyed this part of the course, every week I attempt to take the assignment instructions a little further and find in the HTML & CSS book how to add details I think would look good.</li>
+        </ul>
+    </div>
+    <div class="bottom-div">
+        <a href="https://joelatkinson95.github.io/CSD-340/">Joel Atkinson's CSD-340 Landing Page</a>
+    </div>
+</div>
+<script>
+    let books = [
+        { title: "Band of Brothers", author: "Stephen Ambrose" },
+        { title: "With the Old Breed: At Peleliu & Okinawa", author: "E.B. Sledge" },
+        { title: "Helmet for My Pillow", author: "Robert Leckie" },
+        { title: "The Rise and Fall of the Third Reich", author: "William L. Shirer" },
+        { title: "Pearl Harbor", author: "Craig Nelson" },
+        { title: "The Things Our Fathers Saw", author: "Matthew A. Rozell" },
+        { title: "Berlin Diary", author: "William L. Shirer" },
+        { title: "Slaughterhouse-Five", author: "Kurt Vonnegut, Jr." },
+        { title: "Nuclear War", author: "Annie Jacobson" },
+        { title: "The Second World War", author: "Martin Gilbert" }
+    ];
+
+    function displayAscending() {
+        let listHTML = "<ol>";
+        for (let i = 0; i < books.length; i++) {
+            listHTML += "<li>" + books[i].title + "<div class='author'>" + books[i].author + "</div></li>";
+        }
+        listHTML += "</ol>";
+        document.getElementById("bookList").innerHTML = listHTML;
+    }
+
+    function displayDescending() {
+        let listHTML = "<ol>";
+        for (let i = books.length - 1; i >= 0; i--) {
+            listHTML += "<li>" + books[i].title + "<div class='author'>" + books[i].author + "</div></li>";
+        }
+        listHTML += "</ol>";
+        document.getElementById("bookList").innerHTML = listHTML;
+    }
+
+    displayAscending();
+</script>
+</body>
+</html>
+
